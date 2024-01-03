@@ -1,13 +1,7 @@
 var express = require('express');
 var app = express();
-var fs = require('fs');
 
-app.get('/listUsers', function (req, res) {
-	fs.readFile(__dirname + '/' + 'users.json', 'utf8', function (err, data) {
-		console.log(data);
-		res.end(data);
-	});
-});
+require('./routes/user.js')(app);
 
 var server = app.listen(8081, function () {
 	var host = server.address().address;
